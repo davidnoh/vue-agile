@@ -71,7 +71,7 @@
 				class="agile__dots"
 			>
 				<li
-					v-for="n in countSlides"
+					v-for="n in dotsToShow"
 					:key="n"
 					class="agile__dot"
 					:class="{'agile__dot--current': n - 1 === currentSlide}"
@@ -150,7 +150,8 @@
 			},
 
 			canGoToNext: function () {
-				return (this.settings.infinite || this.currentSlide < this.countSlides - 1)
+				console.log(this.getCurrentSettings().slidesToScroll);
+				return (this.settings.infinite || this.currentSlide < (this.countSlides / this.settings.slidesToScroll) - 1)
 			},
 
 			countSlides: function () {
@@ -159,6 +160,10 @@
 
 			countSlidesAll: function () {
 				return this.slidesAll.length
+			},
+
+			dotsToShow: function() {
+				return this.countSlides / this.settings.slidesToScroll
 			},
 
 			currentBreakpoint: function () {
