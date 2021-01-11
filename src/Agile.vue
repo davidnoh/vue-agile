@@ -150,7 +150,6 @@
 			},
 
 			canGoToNext: function () {
-				console.log(this.getCurrentSettings().slidesToScroll);
 				return (this.settings.infinite || this.currentSlide < (this.countSlides / this.settings.slidesToScroll) - 1)
 			},
 
